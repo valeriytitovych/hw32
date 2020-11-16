@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMDB SEARCH ENGINE</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <form id="movie-form" class="movie-form">
+                <label class="movie-search">
+                    <input id="movie-name" type="text" placeholder="Title">
+                    <select name="type" class="change">
+                        <option value="">All</option>
+                        <option value="movie">Movie</option>
+                        <option value="series">TV Series</option>
+                    </select>
+                </label>
+
+                <button class="btn">Search for a movie</button>
+
+
+                <div class="hidden">
+                    <label>
+                        <input type="text" name="Season" placeholder="Season">
+                    </label>
+                    <label>
+                        <input type="text" name="Episode" placeholder="Episode">
+                    </label>
+                </div>
+            </form>
+        </div>
+
+        <div class="results"></div>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+
+</html>
