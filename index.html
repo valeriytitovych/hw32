@@ -10,32 +10,40 @@
 
 <body>
     <div class="wrapper">
-        <div class="container">
-            <form id="movie-form" class="movie-form">
-                <label class="movie-search">
-                    <input id="movie-name" type="text" placeholder="Title">
-                    <select name="type" class="change">
-                        <option value="">All</option>
-                        <option value="movie">Movie</option>
-                        <option value="series">TV Series</option>
-                    </select>
-                </label>
+        <h1 class="title">The Open Movie Database</h1>
 
-                <button class="btn">Search for a movie</button>
+        <div class="wrapper-form">
+            <input class="wrapper-form-input" type="text" placeholder="Enter a movie...">
 
+            <select class="wrapper-form-select" id="select" name="type">
+                <option class="wrapper-form-select-option" value="movie">movie</option>
+                <option class="wrapper-form-select-option" value="series">series</option>
+                <option class="wrapper-form-select-option" value="episode">episode</option>
+            </select>
 
-                <div class="hidden">
-                    <label>
-                        <input type="text" name="Season" placeholder="Season">
-                    </label>
-                    <label>
-                        <input type="text" name="Episode" placeholder="Episode">
-                    </label>
-                </div>
-            </form>
+            <input class="wrapper-form-submit" type="submit" value="Search">
+            <input class="wrapper-form-favorite" type="submit" value="Favorite">
         </div>
+    </div>
 
-        <div class="results"></div>
+    <div class="movie-list"></div>
+
+    <div class="pagination"></div>
+
+    <div class="navigation"></div>
+
+    <div class="modal-wrapper">
+        <div class="modal-overlay">
+            <div class="modal-window">
+                <button class="close-btn">&#215;</button>
+                <img id="image" alt="poster">
+                <div class="info">
+                    <h1 id="heading"></h1>
+                    <h2 id="year"></h2>
+                    <p id="description"></p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="./app.js"></script>
