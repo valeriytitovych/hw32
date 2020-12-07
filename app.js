@@ -1,20 +1,20 @@
 window.onload = () => {
     const xhr = new XMLHttpRequest();
-    const input = document.querySelector(".wrapper-form-input");
-    const select = document.querySelector(".wrapper-form-select");
-    const submit = document.querySelector(".wrapper-form-submit");
-    const moviesList = document.querySelector(".movie-list");
-    const pagination = document.querySelector(".pagination");
-    const modal = document.querySelector(".modal-wrapper");
-    const modalClose = document.querySelector(".close-btn");
-    const favBtn = document.querySelector(".wrapper-form-favorite");
-    let btnNext = document.createElement("button");
-    let btnPrevious = document.createElement("button");
+    const input = document.querySelector('.wrapper-form-input');
+    const select = document.querySelector('.wrapper-form-select');
+    const submit = document.querySelector('.wrapper-form-submit');
+    const moviesList = document.querySelector('.movie-list');
+    const pagination = document.querySelector('.pagination');
+    const modal = document.querySelector('.modal-wrapper');
+    const modalClose = document.querySelector('.close-btn');
+    const favBtn = document.querySelector('.wrapper-form-favorite');
+    let btnNext = document.createElement('button');
+    let btnPrevious = document.createElement('button');
     let localMovies = JSON.parse(localStorage.localMovies || '[]');
     let page = 1;
 
-    btnNext.innerText = "Next";
-    btnPrevious.innerText = "Previous";
+    btnNext.innerText = 'Next';
+    btnPrevious.innerText = 'Previous';
 
     function parse(name, type, npage, pagePos) {
         npage = npage + pagePos;
@@ -45,17 +45,17 @@ window.onload = () => {
             let favoriteButton = document.createElement('button');
             let addedFavorite = false;
 
-            item.classList.add("movie-list-item");
-            inner.classList.add("movie-list-item-inner");
-            moviePoster.setAttribute("src", `${data.Search[i].Poster}`);
+            item.classList.add('movie-list-item');
+            inner.classList.add('movie-list-item-inner');
+            moviePoster.setAttribute('src', `${data.Search[i].Poster}`);
             inner.appendChild(moviePoster);
             movieTitle.classList.add('movie-title');
             movieTitle.innerText = `${data.Search[i].Title}`;
             movieYear.classList.add('movie-year');
             movieYear.innerText = `${data.Search[i].Year}`;
-            favoriteButton.classList.add("btn-details", "btn-favourite");
-            detailsButton.innerText = "Details";
-            detailsButton.classList.add("btn-details");
+            favoriteButton.classList.add('btn-details', 'btn-favourite');
+            detailsButton.innerText = 'Details';
+            detailsButton.classList.add('btn-details');
             detailsButton.addEventListener('click', () => {
                 getFullInfo(data.Search[i].imdbID);
             });
@@ -87,8 +87,8 @@ window.onload = () => {
             moviesList.appendChild(item);
         }
 
-        document.querySelector(".navigation").appendChild(btnPrevious);
-        document.querySelector(".navigation").appendChild(btnNext);
+        document.querySelector('.navigation').appendChild(btnPrevious);
+        document.querySelector('.navigation').appendChild(btnNext);
 
         if (page == 1) {
             btnPrevious.disabled = true;
@@ -114,7 +114,7 @@ window.onload = () => {
 
             li.classList.add('pagination-list-item');
             a.innerText = i + 1;
-            a.setAttribute("href", "#");
+            a.setAttribute('href', '#');
             a.addEventListener('click', () => {
                 parse(input.value, select.value, i + 1, 0);
             });
@@ -156,8 +156,8 @@ window.onload = () => {
         for (let i = 0; i < localMovies.length; i++) {
             fetch(`https://www.omdbapi.com/?i=${localMovies[i].id}&plot=full&apikey=b070371b`)
                 .then(response => response.json())
-                .then((myJson) => {
-                    let data = myJson;
+                .then((dataJson) => {
+                    let data = dataJson;
                     let item = document.createElement('div');
                     let inner = document.createElement('div');
                     let moviePoster = document.createElement('img');
@@ -166,15 +166,15 @@ window.onload = () => {
                     let favoriteButton = document.createElement('button');
                     let id = data.imdbID;
 
-                    item.classList.add("movie-list-item");
-                    inner.classList.add("movie-list-item-inner");
-                    moviePoster.setAttribute("src", `${data.Poster}`);
+                    item.classList.add('movie-list-item');
+                    inner.classList.add('movie-list-item-inner');
+                    moviePoster.setAttribute('src', `${data.Poster}`);
                     inner.appendChild(moviePoster);
                     movieTitle.classList.add('movie-title');
                     movieTitle.innerText = `${data.Title}`;
                     movieYear.classList.add('movie-year');
                     movieYear.innerText = `${data.Year}`;
-                    favoriteButton.classList.add("btn-details", "btn-remove");
+                    favoriteButton.classList.add('btn-details', 'btn-remove');
                     favoriteButton.innerText = 'Remove';
                     favoriteButton.addEventListener('click', function () {
                         removeFavorite(id);
@@ -211,7 +211,7 @@ window.onload = () => {
 
         if (present == true) {
             localMovies.splice(arrayIndex, 1);
-            localStorage.setItem("localMovies", JSON.stringify(localMovies));
+            localStorage.setItem('localMovies', JSON.stringify(localMovies));
             btn.innerText = 'Add';
             btn.classList.add('btn-avourite');
             btn.classList.remove('btn-remove');
@@ -232,7 +232,7 @@ window.onload = () => {
         }
 
         localMovies.splice(arrayIndex, 1);
-        localStorage.setItem("localMovies", JSON.stringify(localMovies));
+        localStorage.setItem('localMovies', JSON.stringify(localMovies));
         arrayIndex = '';
         showFavorite();
     }
